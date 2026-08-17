@@ -2,7 +2,7 @@ export type Lang = "en" | "es";
 
 export const copy = {
   en: {
-    nav: { services: "Services", process: "Process", contact: "Contact" },
+    nav: { services: "Services", process: "Process", testimonials: "Reviews", contact: "Contact" },
     hero: {
       eyebrow: "Copiague, NY · Serving Long Island",
       title: "Closets to kitchens. Baths to dormers.",
@@ -35,11 +35,17 @@ export const copy = {
       email: "Email",
       address: "Address",
     },
+    testimonials: {
+      heading: "What Homeowners Say",
+      sub: "Real reviews from real clients across Long Island.",
+      reviewer: "Cameron, Homeowner",
+      quote: "Mancebo and his team completely renovated our first floor — new flooring throughout, updated plumbing and electrical, and a brand new kitchen. They were always on time, answered every question quickly, and made the whole process feel easy from start to finish.",
+    },
     footer: { rights: "All rights reserved." },
     heroAlt: "Remodeled modern kitchen with white oak cabinetry",
   },
   es: {
-    nav: { services: "Servicios", process: "Proceso", contact: "Contacto" },
+    nav: { services: "Servicios", process: "Proceso", testimonials: "Opiniones", contact: "Contacto" },
     hero: {
       eyebrow: "Copiague, NY · Servimos Long Island",
       title: "De clósets a cocinas. De baños a buhardillas.",
@@ -71,6 +77,12 @@ export const copy = {
       phone: "Teléfono",
       email: "Correo",
       address: "Dirección",
+    },
+    testimonials: {
+      heading: "Lo Que Dicen los Propietarios",
+      sub: "Reseñas reales de clientes reales en Long Island.",
+      reviewer: "Cameron, Propietario",
+      quote: "Mancebo y su equipo renovaron por completo nuestro primer piso: pisos nuevos en toda la casa, plomería y electricidad actualizadas, y una cocina completamente nueva. Siempre llegaron a tiempo, respondieron cada pregunta rápidamente y hicieron que todo el proceso fuera fácil de principio a fin.",
     },
     footer: { rights: "Todos los derechos reservados." },
     heroAlt: "Cocina moderna remodelada con gabinetes de roble blanco",
