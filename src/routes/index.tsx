@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { copy, type Lang } from "@/lib/i18n";
 import logoAsset from "@/assets/siux-logo.asset.json";
 import heroKitchen from "@/assets/hero-kitchen.jpg";
 import bathImg from "@/assets/bath.jpg";
@@ -46,52 +48,62 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const services = [
-  {
-    title: "Kitchens",
-    img: heroKitchen,
-    text: "Full gut renovations, custom cabinetry, islands, countertops and lighting.",
-  },
-  {
-    title: "Bathrooms",
-    img: bathImg,
-    text: "Tile work, walk-in showers, vanities, plumbing and full bath conversions.",
-  },
-  {
-    title: "Dormers & Additions",
-    img: dormerImg,
-    text: "Shed and doghouse dormers, second-story additions and extensions.",
-  },
-  {
-    title: "Closets & Small Projects",
-    img: closetImg,
-    text: "Built-ins, custom closets, trim, doors, drywall and punch-list work.",
-  },
-];
-
-const steps = [
-  { n: "01", t: "Free Walkthrough", d: "We visit, measure and talk through what you want." },
-  { n: "02", t: "Clear Quote", d: "Line-item pricing with no surprise change orders." },
-  { n: "03", t: "We Build It", d: "One crew, clean jobsite, daily updates from Mancebo." },
-];
-
 function Index() {
+  const [lang, setLang] = useState<Lang>("en");
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem("siux-lang");
+    if (saved === "es" || saved === "en") setLang(saved);
+  }, []);
+
+  const t = copy[lang];
+  const services = t.services.items.map((item, i) => ({
+    ...item,
+    img: [heroKitchen, bathImg, dormerImg, closetImg][i],
+  }));
+
+  const switchLang = (next: Lang) => {
+    setLang(next);
+    window.localStorage.setItem("siux-lang", next);
+  };
+
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
           <img src={logoAsset.url} alt="SIUX Home Remodeling logo" className="h-10 w-auto" />
           <nav className="hidden items-center gap-7 text-sm font-medium uppercase tracking-wider md:flex">
-            <a href="#services" className="hover:text-brand">Services</a>
-            <a href="#process" className="hover:text-brand">Process</a>
-            <a href="#contact" className="hover:text-brand">Contact</a>
+            <a href="#services" className="hover:text-brand">{t.nav.services}</a>
+            <a href="#process" className="hover:text-brand">{t.nav.process}</a>
+            <a href="#contact" className="hover:text-brand">{t.nav.contact}</a>
           </nav>
+          <div className="flex items-center gap-3">
+          <div className="flex items-center overflow-hidden rounded-sm border border-border text-xs font-semibold uppercase tracking-wider">
+            {(["en", "es"] as Lang[]).map((code) => (
+              <button
+                key={code}
+                type="button"
+                onClick={() => switchLang(code)}
+                aria-pressed={lang === code}
+                aria-label={code === "en" ? "Switch to English" : "Cambiar a Español"}
+                className={
+                  "px-2.5 py-1.5 transition " +
+                  (lang === code
+                    ? "bg-brand text-accent-foreground"
+                    : "text-muted-foreground hover:text-brand")
+                }
+              >
+                {code}
+              </button>
+            ))}
+          </div>
           <a
             href="tel:5169146100"
             className="rounded-sm bg-brand px-4 py-2 text-sm font-semibold tracking-wide text-accent-foreground transition hover:bg-brand-deep"
           >
             516-914-6100
           </a>
+          </div>
         </div>
       </header>
 
@@ -100,7 +112,7 @@ function Index() {
         <section className="relative">
           <img
             src={heroKitchen}
-            alt="Remodeled modern kitchen with white oak cabinetry"
+            alt={t.heroAlt}
             width={1600}
             height={1104}
             className="h-[70vh] min-h-[440px] w-full object-cover"
@@ -109,27 +121,26 @@ function Index() {
           <div className="absolute inset-0 flex items-center">
             <div className="mx-auto w-full max-w-6xl px-5">
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-brand">
-                Copiague, NY · Serving Long Island
+                {t.hero.eyebrow}
               </p>
               <h1 className="mt-4 max-w-2xl font-display text-5xl leading-[0.95] tracking-wide text-primary-foreground sm:text-7xl">
-                Closets to kitchens. Baths to dormers.
+                {t.hero.title}
               </h1>
               <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
-                SIUX Home Remodeling is a hands-on contractor handling projects of every size —
-                built right, on schedule, by the same crew start to finish.
+                {t.hero.sub}
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="tel:5169146100"
                   className="rounded-sm bg-brand px-6 py-3 font-semibold tracking-wide text-accent-foreground transition hover:bg-brand-deep"
                 >
-                  Get a Free Estimate
+                  {t.hero.cta}
                 </a>
                 <a
                   href="#services"
                   className="rounded-sm border border-primary-foreground/40 px-6 py-3 font-semibold tracking-wide text-primary-foreground transition hover:bg-primary-foreground/10"
                 >
-                  See What We Do
+                  {t.hero.cta2}
                 </a>
               </div>
             </div>
@@ -138,9 +149,9 @@ function Index() {
 
         {/* Services */}
         <section id="services" className="mx-auto max-w-6xl px-5 py-20">
-          <h2 className="font-display text-4xl tracking-wide sm:text-5xl">What We Build</h2>
+          <h2 className="font-display text-4xl tracking-wide sm:text-5xl">{t.services.heading}</h2>
           <p className="mt-3 max-w-xl text-muted-foreground">
-            No job too small, no job too big. If it's part of your home, we can remodel it.
+            {t.services.sub}
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
             {services.map((s) => (
@@ -169,11 +180,11 @@ function Index() {
         {/* Process */}
         <section id="process" className="bg-secondary py-20">
           <div className="mx-auto max-w-6xl px-5">
-            <h2 className="font-display text-4xl tracking-wide sm:text-5xl">How It Works</h2>
+            <h2 className="font-display text-4xl tracking-wide sm:text-5xl">{t.process.heading}</h2>
             <div className="mt-10 grid gap-8 sm:grid-cols-3">
-              {steps.map((s) => (
-                <div key={s.n} className="border-t-2 border-brand pt-5">
-                  <span className="font-display text-3xl text-brand">{s.n}</span>
+              {t.process.steps.map((s, i) => (
+                <div key={s.t} className="border-t-2 border-brand pt-5">
+                  <span className="font-display text-3xl text-brand">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="mt-2 text-lg font-semibold">{s.t}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{s.d}</p>
                 </div>
@@ -186,26 +197,26 @@ function Index() {
         <section id="contact" className="mx-auto max-w-6xl px-5 py-20">
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <h2 className="font-display text-4xl tracking-wide sm:text-5xl">Get In Touch</h2>
+              <h2 className="font-display text-4xl tracking-wide sm:text-5xl">{t.contact.heading}</h2>
               <p className="mt-3 text-muted-foreground">
-                Call or email Mancebo for a free, no-pressure estimate on your project.
+                {t.contact.sub}
               </p>
             </div>
             <div className="space-y-4 rounded-sm bg-card p-7" style={{ boxShadow: "var(--shadow-soft)" }}>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Phone</p>
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t.contact.phone}</p>
                 <a href="tel:5169146100" className="font-display text-3xl tracking-wide hover:text-brand">
                   516-914-6100
                 </a>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Email</p>
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t.contact.email}</p>
                 <a href="mailto:SIUXLLC@GMAIL.COM" className="text-lg font-medium break-all hover:text-brand">
                   SIUXLLC@GMAIL.COM
                 </a>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Address</p>
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t.contact.address}</p>
                 <address className="text-lg not-italic">Copiague, NY 11726</address>
               </div>
             </div>
@@ -220,7 +231,7 @@ function Index() {
             Mancebo · Copiague, NY · 516-914-6100 · SIUXLLC@GMAIL.COM
           </p>
           <p className="text-xs text-primary-foreground/50">
-            © {new Date().getFullYear()} SIUX Home Remodeling LLC. All rights reserved.
+            © {new Date().getFullYear()} SIUX Home Remodeling LLC. {t.footer.rights}
           </p>
         </div>
       </footer>
