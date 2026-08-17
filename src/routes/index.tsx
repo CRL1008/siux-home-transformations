@@ -217,7 +217,7 @@ function Index() {
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 text-center">
           <p className="font-display text-2xl tracking-wide">SIUX Home Remodeling</p>
           <p className="text-sm text-primary-foreground/70">
-            Cameron · Copiague, NY · 516-914-6100 · SIUXLLC@GMAIL.COM
+            Mancebo · Copiague, NY · 516-914-6100 · SIUXLLC@GMAIL.COM
           </p>
           <p className="text-xs text-primary-foreground/50">
             © {new Date().getFullYear()} SIUX Home Remodeling LLC. All rights reserved.
