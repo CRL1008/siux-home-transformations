@@ -34,7 +34,6 @@ export const Route = createFileRoute("/")({
           email: "SIUXLLC@GMAIL.COM",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "2038 Berfond Ct.",
             addressLocality: "Copiague",
             addressRegion: "NY",
             postalCode: "11726",
@@ -73,7 +72,7 @@ const services = [
 const steps = [
   { n: "01", t: "Free Walkthrough", d: "We visit, measure and talk through what you want." },
   { n: "02", t: "Clear Quote", d: "Line-item pricing with no surprise change orders." },
-  { n: "03", t: "We Build It", d: "One crew, clean jobsite, daily updates from Cameron." },
+  { n: "03", t: "We Build It", d: "One crew, clean jobsite, daily updates from Mancebo." },
 ];
 
 function Index() {
@@ -189,7 +188,7 @@ function Index() {
             <div>
               <h2 className="font-display text-4xl tracking-wide sm:text-5xl">Get In Touch</h2>
               <p className="mt-3 text-muted-foreground">
-                Call or email Cameron for a free, no-pressure estimate on your project.
+                Call or email Mancebo for a free, no-pressure estimate on your project.
               </p>
             </div>
             <div className="space-y-4 rounded-sm bg-card p-7" style={{ boxShadow: "var(--shadow-soft)" }}>
@@ -207,11 +206,7 @@ function Index() {
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Address</p>
-                <address className="text-lg not-italic">
-                  2038 Berfond Ct.
-                  <br />
-                  Copiague, NY 11726
-                </address>
+                <address className="text-lg not-italic">Copiague, NY 11726</address>
               </div>
             </div>
           </div>
@@ -222,7 +217,7 @@ function Index() {
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 text-center">
           <p className="font-display text-2xl tracking-wide">SIUX Home Remodeling</p>
           <p className="text-sm text-primary-foreground/70">
-            Cameron · Copiague, NY · 516-914-6100 · SIUXLLC@GMAIL.COM
+            Mancebo · Copiague, NY · 516-914-6100 · SIUXLLC@GMAIL.COM
           </p>
           <p className="text-xs text-primary-foreground/50">
             © {new Date().getFullYear()} SIUX Home Remodeling LLC. All rights reserved.
