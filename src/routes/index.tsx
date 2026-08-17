@@ -34,7 +34,6 @@ export const Route = createFileRoute("/")({
           email: "SIUXLLC@GMAIL.COM",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "2038 Berfond Ct.",
             addressLocality: "Copiague",
             addressRegion: "NY",
             postalCode: "11726",
