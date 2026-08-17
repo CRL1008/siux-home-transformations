@@ -188,7 +188,7 @@ function Index() {
             <div>
               <h2 className="font-display text-4xl tracking-wide sm:text-5xl">Get In Touch</h2>
               <p className="mt-3 text-muted-foreground">
-                Call or email Cameron for a free, no-pressure estimate on your project.
+                Call or email Mancebo for a free, no-pressure estimate on your project.
               </p>
             </div>
             <div className="space-y-4 rounded-sm bg-card p-7" style={{ boxShadow: "var(--shadow-soft)" }}>
@@ -206,11 +206,7 @@ function Index() {
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Address</p>
-                <address className="text-lg not-italic">
-                  2038 Berfond Ct.
-                  <br />
-                  Copiague, NY 11726
-                </address>
+                <address className="text-lg not-italic">Copiague, NY 11726</address>
               </div>
             </div>
           </div>
