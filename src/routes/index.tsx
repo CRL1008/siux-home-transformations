@@ -72,7 +72,7 @@ const services = [
 const steps = [
   { n: "01", t: "Free Walkthrough", d: "We visit, measure and talk through what you want." },
   { n: "02", t: "Clear Quote", d: "Line-item pricing with no surprise change orders." },
-  { n: "03", t: "We Build It", d: "One crew, clean jobsite, daily updates from Cameron." },
+  { n: "03", t: "We Build It", d: "One crew, clean jobsite, daily updates from Mancebo." },
 ];
 
 function Index() {
