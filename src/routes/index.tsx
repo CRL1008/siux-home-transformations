@@ -75,6 +75,7 @@ function Index() {
           <nav className="hidden items-center gap-7 text-sm font-medium uppercase tracking-wider md:flex">
             <a href="#services" className="hover:text-brand">{t.nav.services}</a>
             <a href="#process" className="hover:text-brand">{t.nav.process}</a>
+            <a href="#testimonials" className="hover:text-brand">{t.nav.testimonials}</a>
             <a href="#contact" className="hover:text-brand">{t.nav.contact}</a>
           </nav>
           <div className="flex items-center gap-3">
@@ -189,6 +190,33 @@ function Index() {
                   <p className="mt-1 text-sm text-muted-foreground">{s.d}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section id="testimonials" className="bg-secondary py-20">
+          <div className="mx-auto max-w-6xl px-5">
+            <h2 className="font-display text-4xl tracking-wide sm:text-5xl">{t.testimonials.heading}</h2>
+            <p className="mt-3 max-w-xl text-muted-foreground">
+              {t.testimonials.sub}
+            </p>
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
+              <article className="rounded-sm bg-card p-7" style={{ boxShadow: "var(--shadow-soft)" }}>
+                <div className="flex gap-1 text-brand" aria-label="5 out of 5 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                      <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.918 1.452L12 18.863l-4.669 2.894c-.954.581-2.189-.316-1.918-1.452l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
+                    </svg>
+                  ))}
+                </div>
+                <blockquote className="mt-4 text-lg leading-relaxed text-foreground">
+                  “{t.testimonials.quote}”
+                </blockquote>
+                <p className="mt-5 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                  — {t.testimonials.reviewer}
+                </p>
+              </article>
             </div>
           </div>
         </section>
