@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { copy, type Lang } from "@/lib/i18n";
-import logoAsset from "@/assets/siux-logo.asset.json";
+import logo from "@/assets/siux-logo.png";
 import heroKitchen from "@/assets/hero-kitchen.jpg";
 import bathImg from "@/assets/bath.jpg";
 import dormerImg from "@/assets/dormer.jpg";
@@ -71,7 +71,7 @@ function Index() {
     <div className="min-h-screen bg-background font-sans text-foreground">
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
-          <img src={logoAsset.url} alt="SIUX Home Remodeling logo" className="h-10 w-auto" />
+          <img src={logo} alt="SIUX Home Remodeling logo" className="h-10 w-auto" />
           <nav className="hidden items-center gap-7 text-sm font-medium uppercase tracking-wider md:flex">
             <a href="#services" className="hover:text-brand">{t.nav.services}</a>
             <a href="#process" className="hover:text-brand">{t.nav.process}</a>
